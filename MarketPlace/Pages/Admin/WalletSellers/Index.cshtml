@@ -1,0 +1,73 @@
+﻿@page
+@model MarketPlace.Pages.Admin.WalletSellers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <p>
+                            <a asp-page="Create">ایجاد کردن</a>
+                        </p>
+                        <div>
+                            <div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.SellerWallet[0].Price)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.SellerWallet[0].TransactionType)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.SellerWallet[0].Description)
+                                            </th>
+                                            <th scope="col">
+                                                فروشنده
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.SellerWallet[0].IsDelete)
+                                            </th>
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.SellerWallet)
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.SellerWallet[0].Price)">@Html.DisplayFor(modelItem => item.Price)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.SellerWallet[0].TransactionType)">@Html.DisplayFor(modelItem => item.TransactionType)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.SellerWallet[0].Description)">@Html.DisplayFor(modelItem => item.Description)</td>
+                                                <td data-label="فروشنده">@Html.DisplayFor(modelItem => item.Seller.StoreName)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

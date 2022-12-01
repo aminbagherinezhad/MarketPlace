@@ -1,0 +1,77 @@
+﻿@page
+@model MarketPlace.Pages.Admin.MessageTicket.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>حذف</h2>
+
+                        <h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+                        <div>
+                            <h4>تیکت</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.Text)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.Text)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.Ticket)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.Ticket.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.Sender)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.Sender.EmailActiveCode)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.CreateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.CreateDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.LastUpdateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.LastUpdateDate)
+                                </dd>
+                            </dl>
+
+                            <form method="post">
+                                <input type="hidden" asp-for="TicketMessage.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-page="./Index">برگشت به لیست</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

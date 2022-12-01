@@ -1,0 +1,64 @@
+﻿@page
+@model MarketPlace.Pages.Admin.MessageTicket.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>تیکت</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.Text)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.Text)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.Ticket)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.Ticket.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.Sender)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.Sender.EmailActiveCode)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TicketMessage.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TicketMessage.IsDelete)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.TicketMessage.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

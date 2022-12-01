@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "داشبورد";
+}
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("UserSidebar")
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+
+                        @*<div class="card text-white text-right bg-primary mb-3" style="text-align:right">
+                            <div class="card-header" style="text-align:right">سفارشات اخیر</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:right">در این بخش میتوانید سفارشاتی که قبلا انجام دادین را ببینید</h5>
+                                <p class="card-text" style="text-align:right;"><a class="text-orange" style="color:orange" id="colorhover" asp-area="User" asp-controller="Account" asp-action="Orders">برای ادامه اینجا کلیک بکنید</a></p>
+                            </div>
+                        </div>*@
+
+                        <div class="card text-white text-right bg-primary mb-3">
+                            <div class="card-header" style="text-align:right">فروشنده شوید</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:right">میتوانید با ارائه درخواست محصولات خود را بفروش برسانید</h5>
+                                <p class="card-text" style="text-align:right"><a class="text-orange" style="color:orange" id="colorhover" asp-area="User" asp-controller="Seller" asp-action="RequestSellerPanel">برای ادامه اینجا کلیک کنید</a></p>
+                            </div>
+                        </div>
+
+                        <div class="card text-white text-right bg-primary mb-3">
+                            <div class="card-header" style="text-align:right">تیکت ارسال کنید</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:right">در این بخش میتوانید به مدیریت جهت پیگیری و ارائه بازخورد تیکت ارسال بکنید</h5>
+                                <p class="card-text" style="text-align:right"><a class="text-orange" style="color:orange" id="colorhover" asp-area="User" asp-controller="Ticket" asp-action="AddTicket">برای ادامه اینجا کلیک بکنید</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

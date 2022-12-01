@@ -1,0 +1,94 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Contacts.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>ویرایش</h2>
+
+                        <h4>تماس با ما</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.UserId" class="control-label"></label>
+                                        <select asp-for="ContactUs.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                                        <span asp-validation-for="ContactUs.UserId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.UserIp" class="control-label">ای پی کاربر</label>
+                                        <input asp-for="ContactUs.UserIp" class="form-control" />
+                                        <span asp-validation-for="ContactUs.UserIp" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.Email" class="control-label">ایمیل</label>
+                                        <input asp-for="ContactUs.Email" class="form-control" />
+                                        <span asp-validation-for="ContactUs.Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.FullName" class="control-label">اسم و فامیل</label>
+                                        <input asp-for="ContactUs.FullName" class="form-control" />
+                                        <span asp-validation-for="ContactUs.FullName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.Subject" class="control-label">موضوع</label>
+                                        <input asp-for="ContactUs.Subject" class="form-control" />
+                                        <span asp-validation-for="ContactUs.Subject" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.Text" class="control-label">متن</label>
+                                        <input asp-for="ContactUs.Text" class="form-control" />
+                                        <span asp-validation-for="ContactUs.Text" class="text-danger"></span>
+                                    </div>
+                                    <input type="hidden" asp-for="ContactUs.Id" />
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="ContactUs.IsDelete" /> @Html.DisplayNameFor(model => model.ContactUs.IsDelete)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.CreateDate" class="control-label">تاریخ ایجاد</label>
+                                        <input asp-for="ContactUs.CreateDate" class="form-control" />
+                                        <span asp-validation-for="ContactUs.CreateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ContactUs.LastUpdateDate" class="control-label">تاریخ آپدیت</label>
+                                        <input asp-for="ContactUs.LastUpdateDate" class="form-control" />
+                                        <span asp-validation-for="ContactUs.LastUpdateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

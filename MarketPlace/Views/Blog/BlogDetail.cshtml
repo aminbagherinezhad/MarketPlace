@@ -1,0 +1,68 @@
+﻿@model MarketPlace.DataLayer.Entities.Mazholar.Blog
+    @using MarketPlace.Application.Utils
+    @{
+    ViewData["Title"] = @Model.Title;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>جزئیات مطلب بلاگ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!--blog body area start-->
+<div class="blog_details mt-60">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-9 col-md-12">
+                <!--blog grid area start-->
+                <div class="blog_wrapper">
+                    <article class="single_blog">
+                        <figure>
+                            <div class="post_header">
+                                <h3 class="post_title">@Model.Title</h3>
+                                <div class="blog_meta">
+                                    <span class="author">ارسال توسط : <a href="#">@Model.Writer</a> / </span>
+                                </div>
+                            </div>
+                            <div class="blog_thumb">
+                                <a href="#"><img src="~/Blog/@Model.ImageName" alt="@Model.Title"></a>
+                            </div>
+                            <figcaption class="blog_content">
+                                <div class="post_content">
+                                    <p>@Html.Raw(Model.Text)</p>
+
+                                </div>
+
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="blog_sidebar_widget">
+                  
+                    <div class="widget_list widget_post">
+                        <h3>مطالب اخیر</h3>
+                      
+                       @await Component.InvokeAsync("BlogRecent")
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--blog section area end-->

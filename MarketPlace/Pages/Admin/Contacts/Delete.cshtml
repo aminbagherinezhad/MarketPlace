@@ -1,0 +1,95 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Contacts.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>حذف</h2>
+
+                        <h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+                        <div>
+                            <h4>ContactUs</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.UserIp)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.UserIp)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.Email)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.Email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.FullName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.FullName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.Subject)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.Subject)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.Text)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.Text)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.User)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.User.EmailActiveCode)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.CreateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.CreateDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ContactUs.LastUpdateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ContactUs.LastUpdateDate)
+                                </dd>
+                            </dl>
+
+                            <form method="post">
+                                <input type="hidden" asp-for="ContactUs.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-page="./Index">برگشت به لیست</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

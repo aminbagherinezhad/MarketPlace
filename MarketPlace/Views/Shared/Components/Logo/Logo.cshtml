@@ -1,0 +1,11 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@model List<MarketPlace.DataLayer.Entities.Account.Logo>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var slider in Model)
+    {
+        <a href="/home"><img src="/Logo/@slider.Imagename" alt=""></a>
+    }
+
+}

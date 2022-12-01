@@ -1,0 +1,113 @@
+﻿@page
+@model MarketPlace.Pages.Admin.contactsetting.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+     Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>حذف</h2>
+
+<h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+<div>
+    <h4>تنظیمات سایت</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.Mobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.Mobile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.Phone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.FooterText)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.FooterText)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.CopyRight)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.CopyRight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.MapScript)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.MapScript)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.AboutUs)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.AboutUs)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.IsDefault)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.IsDefault)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.IsDelete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.IsDelete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.CreateDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteSetting.LastUpdateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteSetting.LastUpdateDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="SiteSetting.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">برگشت به لیست</a>
+    </form>
+</div>
+        </div>
+        </div>
+            </div>
+        </div>
+    </div>
+</section>

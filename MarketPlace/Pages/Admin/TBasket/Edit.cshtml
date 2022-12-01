@@ -1,0 +1,73 @@
+﻿@page
+@model MarketPlace.Pages.Admin.TBasket.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>ویرایش</h2>
+
+<h4>عنوان سبد ها در صفحه اصلی</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TitleBasket.Placement" class="control-label">مکان قرار گیری از 1 تا 5</label>
+                <input asp-for="TitleBasket.Placement" class="form-control" />
+                <span asp-validation-for="TitleBasket.Placement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleBasket.Title" class="control-label">عنوان</label>
+                <input asp-for="TitleBasket.Title" class="form-control" />
+                <span asp-validation-for="TitleBasket.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleBasket.Description" class="control-label">خلاصه متن</label>
+                <input asp-for="TitleBasket.Description" class="form-control" />
+                <span asp-validation-for="TitleBasket.Description" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="TitleBasket.Id" />
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="TitleBasket.IsDelete" /> @Html.DisplayNameFor(model => model.TitleBasket.IsDelete)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleBasket.CreateDate" class="control-label">تاریخ ایجاد</label>
+                <input asp-for="TitleBasket.CreateDate" class="form-control" />
+                <span asp-validation-for="TitleBasket.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TitleBasket.LastUpdateDate" class="control-label">تاریخ بروزرسانی</label>
+                <input asp-for="TitleBasket.LastUpdateDate" class="form-control" />
+                <span asp-validation-for="TitleBasket.LastUpdateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">برگشت به لیست</a>
+</div>
+

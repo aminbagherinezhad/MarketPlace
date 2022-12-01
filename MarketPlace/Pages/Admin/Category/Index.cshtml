@@ -1,0 +1,76 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Category.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <p>
+                            <a asp-page="Create">ایجاد کردن</a>
+                        </p>
+                        <div>
+                            <div>
+                                <table>
+
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ProductCategory[0].Title)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ProductCategory[0].UrlName)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ProductCategory[0].IsActive)
+                                            </th>
+                                            <th scope="col">
+                                                زیر مجموعه
+                                            </th>
+                                        @*    <th>
+                                                @Html.DisplayNameFor(model => model.ProductCategory[0].IsDelete)
+                                            </th>*@
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        @foreach (var item in Model.ProductCategory)
+                                        {
+
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.ProductCategory[0].Title)">@Html.DisplayFor(modelItem => item.Title)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.ProductCategory[0].UrlName)">@Html.DisplayFor(modelItem => item.UrlName)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.ProductCategory[0].IsActive)">@Html.DisplayFor(modelItem => item.IsActive)</td>
+                                                <td data-label="زیرمجموعه">@Html.DisplayFor(modelItem => item.Parent.Title)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,93 @@
+﻿@page
+@model MarketPlace.Pages.Admin.OrderDetails.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>ویرایش</h2>
+
+                        <h4>جزئیات فروش</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.OrderId" class="control-label">شناسه سفارش</label>
+                                        <select asp-for="OrderDetail.OrderId" class="form-control" asp-items="ViewBag.OrderId"></select>
+                                        <span asp-validation-for="OrderDetail.OrderId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.ProductId" class="control-label">محصول</label>
+                                        <select asp-for="OrderDetail.ProductId" class="form-control" asp-items="ViewBag.Title"></select>
+                                        <span asp-validation-for="OrderDetail.ProductId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.ProductColorId" class="control-label">کد رنگ محصول</label>
+                                        <select asp-for="OrderDetail.ProductColorId" class="form-control" asp-items="ViewBag.ProductColorId"></select>
+                                        <span asp-validation-for="OrderDetail.ProductColorId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.Count" class="control-label">تعداد</label>
+                                        <input asp-for="OrderDetail.Count" class="form-control" />
+                                        <span asp-validation-for="OrderDetail.Count" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.ProductPrice" class="control-label">قیمت محصول</label>
+                                        <input asp-for="OrderDetail.ProductPrice" class="form-control" />
+                                        <span asp-validation-for="OrderDetail.ProductPrice" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.ProductColorPrice" class="control-label">قیمت رنگ محصول</label>
+                                        <input asp-for="OrderDetail.ProductColorPrice" class="form-control" />
+                                        <span asp-validation-for="OrderDetail.ProductColorPrice" class="text-danger"></span>
+                                    </div>
+                                    <input type="hidden" asp-for="OrderDetail.Id" />
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="OrderDetail.IsDelete" /> @Html.DisplayNameFor(model => model.OrderDetail.IsDelete)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.CreateDate" class="control-label">تاریخ ایجاد</label>
+                                        <input asp-for="OrderDetail.CreateDate" class="form-control" />
+                                        <span asp-validation-for="OrderDetail.CreateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="OrderDetail.LastUpdateDate" class="control-label">تاریخ بروز رسانی</label>
+                                        <input asp-for="OrderDetail.LastUpdateDate" class="form-control" />
+                                        <span asp-validation-for="OrderDetail.LastUpdateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-info" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

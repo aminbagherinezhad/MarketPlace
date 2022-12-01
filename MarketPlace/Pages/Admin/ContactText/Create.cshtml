@@ -1,0 +1,83 @@
+﻿@page
+@model MarketPlace.Pages.Admin.ContactText.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد کردن";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>ایجاد کردن</h2>
+
+                        <h4>تماس</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Contact.Title" class="control-label">عنوان</label>
+                                        <input asp-for="Contact.Title" class="form-control" />
+                                        <span asp-validation-for="Contact.Title" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Contact.Address" class="control-label">آدرس</label>
+                                        <input asp-for="Contact.Address" class="form-control" />
+                                        <span asp-validation-for="Contact.Address" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Contact.Phone" class="control-label">تلفن</label>
+                                        <input asp-for="Contact.Phone" class="form-control" />
+                                        <span asp-validation-for="Contact.Phone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Contact.Email" class="control-label">ایمیل</label>
+                                        <input asp-for="Contact.Email" class="form-control" />
+                                        <span asp-validation-for="Contact.Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="Contact.IsDelete" /> @Html.DisplayNameFor(model => model.Contact.IsDelete)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Contact.CreateDate" class="control-label">تاریخ ایجاد</label>
+                                        <input asp-for="Contact.CreateDate" class="form-control" />
+                                        <span asp-validation-for="Contact.CreateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Contact.LastUpdateDate" class="control-label">تاریخ آپدیت</label>
+                                        <input asp-for="Contact.LastUpdateDate" class="form-control" />
+                                        <span asp-validation-for="Contact.LastUpdateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-page="Index">برگشت به لیست</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

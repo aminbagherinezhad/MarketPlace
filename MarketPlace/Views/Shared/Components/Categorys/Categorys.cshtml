@@ -1,0 +1,10 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@model List<MarketPlace.DataLayer.Entities.Products.ProductCategory>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var slider in Model.Where(s => s.ParentId == null))
+    {
+        <option value="@slider.UrlName">@slider.Title</option>
+    }
+}

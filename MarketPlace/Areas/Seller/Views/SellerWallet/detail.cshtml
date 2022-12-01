@@ -1,0 +1,128 @@
+﻿@using MarketPlace.Application.Utils
+@using MarketPlace.Application.Extensions
+@using MarketPlace.DataLayer.Entities.Wallet
+@using MarketPlace.DataLayer.Entities.Account
+@using MarketPlace.DataLayer.Entities.Products
+@using MarketPlace.DataLayer.Entities.ProductOrder
+@model IEnumerable<MarketPlace.DataLayer.Entities.ProductOrder.Order>
+@{
+    ViewData["Title"] = "کیف پول فروشنده";
+    var Users = ViewData["User"] as List<User>;
+    var Products = ViewData["Product"] as List<Product>;
+    var Orderdetail = ViewData["OrderDetails"] as List<OrderDetail>;
+}
+
+
+@section scripts
+{
+<partial name="_JqueryValidators" />
+}
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SellerSidebar")
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade active show" id="account-details">
+                            <h3> </h3>
+                            <h3>برای تسویه به پشتیبانی تیکت ارسال بکنید</h3>
+                            <form method="get" asp-area="Seller" asp-controller="SellerWallet" asp-action="Index" id="filter-form">
+
+                                <div>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">شناسه</th>
+                                                    <th scope="col">نام</th>
+                                                    <th scope="col">نام خانوادگی</th>
+                                                    <th scope="col">موبایل</th>
+                                                    <th scope="col">ایمیل</th>
+                                                    <th scope="col">آدرس</th>
+                                                    <th scope="col">تعداد سفارش از محصول</th>
+                                                    <th scope="col">رنگ محصول</th>
+                                                    <th scope="col">عنوان محصول</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                             
+                                                @foreach (var wallet in Model)
+                                                {
+                                                    <tr>
+                                                        <td scope="row" data-label="شناسه">@wallet.Id</td>
+                                                        @foreach (var item in Users.Where(g => g.Id == wallet.UserId))
+                                                        {
+                                                        <td data-label="نام">@item.FirstName</td>
+                                                        <td data-label="نام خانوادگی">@item.LastName</td>
+                                                        <td data-label="موبایل">@item.Mobile</td>
+                                                        <td data-label="ایمیل">@item.Email</td>
+                                                        <td data-label="آدرس">@item.Address</td>
+                                                        }
+                                                         @foreach (var items in Orderdetail.Where(g => g.OrderId == @wallet.Id).Take(1))
+                                                        {
+                                                             <td data-label="تعداد سفارش از محصول">@items.Count</td>
+                                                            @if (@items.ProductColor != null)
+                                                            {
+                                                                <td data-label="رنگ محصول">@items.ProductColor.ColorName</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td data-label="رنگ محصول">ندارد</td>
+                                                            }
+
+                                                            @foreach (var product in Products.Where(s => s.Id == @items.ProductId))
+                                                            {
+                                                                @if (@product.Title != null)
+                                                                {
+                                                                    <td data-label="عنوان محصول">@product.Title</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td data-label="عنوان محصول">ندارد</td>
+                                                                }
+                                                            }
+                                                        
+                                                        }
+                                                       
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                    }
+                                    else
+                                    {
+                                        <partial name="_NoItemFound" />
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

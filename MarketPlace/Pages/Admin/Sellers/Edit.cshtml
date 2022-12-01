@@ -1,0 +1,108 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Sellers.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>ویرایش</h2>
+
+                        <h4>فروشنده</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.UserId" class="control-label">شناسه کاربر</label>
+                                        <select asp-for="Seller.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                                        <span asp-validation-for="Seller.UserId" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.StoreName" class="control-label">اسم فروشگاه</label>
+                                        <input asp-for="Seller.StoreName" class="form-control" />
+                                        <span asp-validation-for="Seller.StoreName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.Phone" class="control-label">تلفن</label>
+                                        <input asp-for="Seller.Phone" class="form-control" />
+                                        <span asp-validation-for="Seller.Phone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.Mobile" class="control-label">موبایل</label>
+                                        <input asp-for="Seller.Mobile" class="form-control" />
+                                        <span asp-validation-for="Seller.Mobile" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.Address" class="control-label">آدرس</label>
+                                        <input asp-for="Seller.Address" class="form-control" />
+                                        <span asp-validation-for="Seller.Address" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.Description" class="control-label">توضیخات</label>
+                                        <input asp-for="Seller.Description" class="form-control" />
+                                        <span asp-validation-for="Seller.Description" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.AdminDescription" class="control-label">توضیحات آدمین</label>
+                                        <input asp-for="Seller.AdminDescription" class="form-control" />
+                                        <span asp-validation-for="Seller.AdminDescription" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.StoreAcceptanceDescription" class="control-label">وضعیت</label>
+                                        <input asp-for="Seller.StoreAcceptanceDescription" class="form-control" />
+                                        <span asp-validation-for="Seller.StoreAcceptanceDescription" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.StoreAcceptanceState" class="control-label">وضعیت</label>
+                                        <select asp-for="Seller.StoreAcceptanceState" class="form-control"></select>
+                                        <span asp-validation-for="Seller.StoreAcceptanceState" class="text-danger"></span>
+                                    </div>
+                                    <input type="hidden" asp-for="Seller.Id" />
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="Seller.IsDelete" /> @Html.DisplayNameFor(model => model.Seller.IsDelete)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.CreateDate" class="control-label">تاریخ ایجاد</label>
+                                        <input asp-for="Seller.CreateDate" class="form-control" />
+                                        <span asp-validation-for="Seller.CreateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Seller.LastUpdateDate" class="control-label">تاریخ بروزرسانی</label>
+                                        <input asp-for="Seller.LastUpdateDate" class="form-control" />
+                                        <span asp-validation-for="Seller.LastUpdateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-info" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

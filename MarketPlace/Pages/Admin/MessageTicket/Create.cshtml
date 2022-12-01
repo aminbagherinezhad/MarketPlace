@@ -1,0 +1,75 @@
+﻿@page
+@model MarketPlace.Pages.Admin.MessageTicket.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد کردن";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>ایجاد کردن</h2>
+
+                        <h4>تیکت</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="TicketMessage.TicketId" class="control-label"></label>
+                                        <select asp-for="TicketMessage.TicketId" class="form-control" asp-items="ViewBag.TicketId"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TicketMessage.SenderId" class="control-label"></label>
+                                        <select asp-for="TicketMessage.SenderId" class="form-control" asp-items="ViewBag.SenderId"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TicketMessage.Text" class="control-label"></label>
+                                        <input asp-for="TicketMessage.Text" class="form-control" />
+                                        <span asp-validation-for="TicketMessage.Text" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="TicketMessage.IsDelete" /> @Html.DisplayNameFor(model => model.TicketMessage.IsDelete)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TicketMessage.CreateDate" class="control-label"></label>
+                                        <input asp-for="TicketMessage.CreateDate" class="form-control" />
+                                        <span asp-validation-for="TicketMessage.CreateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TicketMessage.LastUpdateDate" class="control-label"></label>
+                                        <input asp-for="TicketMessage.LastUpdateDate" class="form-control" />
+                                        <span asp-validation-for="TicketMessage.LastUpdateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Create" class="btn btn-primary" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-page="Index">برگشت به لیست</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

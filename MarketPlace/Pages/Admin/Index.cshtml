@@ -1,0 +1,425 @@
+﻿@page
+@model DIGIShop.Pages.Admin.IndexModel
+@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@*<br />
+<br />
+<div class="col-lg-12">
+
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                مدیریت محصولات ارسال شده توسط کاربران
+            </div>
+            <div class="panel-body">
+                <p>کاربرانی که بعد از ارتقا به سطح فروشندگی محصولات خود را آپلود میکنند از این قسمت محصولات آن ها بررسی میشود</p>
+            </div>
+            <div class="panel-footer">
+                <a asp-area="Admins" asp-controller="Products" asp-action="Index">وارد جزئیات شوید</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                بررسی درخواست های فروشندگی توسط کاربران
+            </div>
+            <div class="panel-body">
+                <p>از این قسمت آدمین میتواند کاربرانی که قصد دارند سطح کاربری خود را به فروشندگی ارتقا دهند و محصولات خود را آپلود بکنند مشاهده بکند</p>
+            </div>
+            <div class="panel-footer">
+                <a asp-area="Admins" asp-controller="Seller" asp-action="SellerRequests">وارد جزئیات شوید</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                تسویه حساب با فروشندگان
+            </div>
+            <div class="panel-body">
+                <p>در این قسمت وضعیت تسویه حساب ها با فروشندگان را آدمین میتواند مشاهده بکنید و با فروشندگان تسویه بکند . اطلاعات فروشندگان قابل مشاهده میبشاد .</p>
+            </div>
+            <div class="panel-footer">
+                <a asp-area="Admins" asp-controller="Seller" asp-action="ListPaymentSeller">وارد جزئیات شوید</a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            لیست کاربران
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>نام و نام خانوادگی</th>
+                            <th>ایمیل</th>
+                            <th>موبایل</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @await Component.InvokeAsync("User")
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+<div class="col-lg-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            لیست ایتم های مدیریت
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>عنوان</th>
+                            <th>توضیح</th>
+                            <th>لینک</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>صفحه تماس با ما</td>
+                            <td>مدیریت صفحه تماس با ما</td>
+                            <td> <a href="/admin/Contacts">تماس با ما</a></td>
+                        </tr>
+                        <tr>
+                            <td>مدیریت صفحه بلاگ</td>
+                            <td>از این قسمت میتوانید صفحه بلاگ را مدیریت بکنید</td>
+                            <td>  <a href="/admin/Blogs">صفحه بلاگ</a></td>
+                        </tr>
+                        <tr>
+                            <td>تماس با ما مطالب</td>
+                            <td>تماس با ما مطالب</td>
+                            <td>  <a href="/admin/ContactText">تماس با ما مطالب</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>محصولات</td>
+                            <td>از این بخش میتوانید محصولات را مدیریت بکنید</td>
+                            <td><a href="/admin/Products"> محصولات</a></td>
+                        </tr>
+                        <tr>
+                            <td>مجوز ها</td>
+                            <td>از این بخش میتوانید مجوز هارا مدیریت بکنید</td>
+                            <td> <a href="/admin/Licesis">مجوز ها</a></td>
+                        </tr>
+                        <tr>
+                            <td>لوگو ها</td>
+                            <td>از این بخش میتوانید لوگو را مدیریت بکنید</td>
+                            <td>  <a href="/admin/Logos">لوگو</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>متن تیکت ها </td>
+                            <td>از این بخش میتوانید متن تیکت ها را مدیریت بکنید</td>
+                            <td>  <a href="/admin/MessageTicket">متن تیکت ها</a></td>
+                        </tr>
+                        <tr>
+                            <td>عنوان های سبد خرید </td>
+                            <td>از این بخش میتوانید عنوان های سبد خرید را مدیریت بکنید</td>
+                            <td>  <a href="/admin/TBasket"> عنوان های سبد خرید در صفحه اصلی</a></td>
+                        </tr>
+
+                        <tr>
+                            <td> جزئیات سفارش </td>
+                            <td>از این بخش میتوانید جزئیات سفارش را مدیریت بکنید</td>
+                            <td> <a href="/admin/OrderDetails">جزئیات سفارش</a></td>
+                        </tr>
+                        <tr>
+                            <td> سفارش </td>
+                            <td>از این بخش میتوانید سفارش را مدیریت بکنید</td>
+                            <td>    <a href="/admin/Orders"> سفارش</a></td>
+                        </tr>
+                        <tr>
+                            <td> گروه ها و زیر گروه ها </td>
+                            <td>از این بخش میتوانید گروه ها و زیر گروه ها را مدیریت بکنید</td>
+                            <td>    <a href="/admin/Category"> گروه ها</a></td>
+                        </tr>
+                        <tr>
+                            <td> ویژگی اول سایت </td>
+                            <td>از این بخش میتوانید ویژگی اول سایت را مدیریت بکنید</td>
+                            <td> <a href="/admin/Properties">ویژگی اول سایت</a></td>
+                        </tr>
+                        <tr>
+                            <td> فروشنده </td>
+                            <td>از این بخش میتوانید فروشنده را مدیریت بکنید</td>
+                            <td><a href="/admin/Sellers">فروشنده</a></td>
+                        </tr>
+
+                        <tr>
+                            <td> بنرها </td>
+                            <td>از این بخش میتوانید بنرها را مدیریت بکنید</td>
+                            <td>  <a href="/admin/SiteBanners">بنرها</a></td>
+                        </tr>
+                        <tr>
+                            <td> اسلایدر </td>
+                            <td>از این بخش میتوانید اسلایدر را مدیریت بکنید</td>
+                            <td>   <a href="/admin/Sliders">اسلایدر</a></td>
+                        </tr>
+
+                        <tr>
+                            <td> شبکه اجتماعی </td>
+                            <td>از این بخش میتوانید شبکه اجتماعی را مدیریت بکنید</td>
+                            <td>    <a href="/admin/Socials">شبکه اجتماعی</a></td>
+                        </tr>
+
+                        <tr>
+                            <td> تیکت ها </td>
+                            <td>از این بخش میتوانید تیکت ها را مدیریت بکنید</td>
+                            <td>  <a href="/admin/Tickets">تیکت ها</a></td>
+                        </tr>
+
+                        <tr>
+                            <td> تماس با ما در قسمت فوتر و صفه تماس با ما </td>
+                            <td>از این بخش میتوانید تماس با ما در قسمت فوتر و صفه تماس با ما را مدیریت بکنید</td>
+                            <td>  <a href="/admin/contactsetting">تماس با ما در قسمت فوتر و صفه تماس با ما</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>کاربران </td>
+                            <td>از این بخش میتوانید کاربران را مدیریت بکنید</td>
+                            <td> <a href="/admin/Users">کاربران</a></td>
+                        </tr>
+
+                        <tr>
+                            <td>کیف پول </td>
+                            <td>از این بخش میتوانید کیف پول را مدیریت بکنید</td>
+                            <td> <a href="/admin/WalletSellers">کیف پول</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+</div>
+
+*@
+
+
+
+
+
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+
+                        <div class="card text-white text-right bg-primary mb-3" style="text-align:right">
+                            <div class="card-header" style="text-align:right"> مدیریت محصولات ارسال شده توسط کاربران</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:right">کاربرانی که بعد از ارتقا به سطح فروشندگی محصولات خود را آپلود میکنند از این قسمت محصولات آن ها بررسی میشود</h5>
+                                <p class="card-text" style="text-align:right;"><a class="text-orange" style="color:orange" id="colorhover" asp-area="Admins" asp-controller="Products" asp-action="Index">برای ادامه اینجا کلیک بکنید</a></p>
+                            </div>
+                        </div>
+
+                        <div class="card text-white text-right bg-primary mb-3">
+                            <div class="card-header" style="text-align:right">  بررسی درخواست های فروشندگی توسط کاربران</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:right">از این قسمت آدمین میتواند کاربرانی که قصد دارند سطح کاربری خود را به فروشندگی ارتقا دهند و محصولات خود را آپلود بکنند مشاهده بکند</h5>
+                                <p class="card-text" style="text-align:right"><a class="text-orange" style="color:orange" id="colorhover" asp-area="Admins" asp-controller="Seller" asp-action="SellerRequests">برای ادامه اینجا کلیک کنید</a></p>
+                            </div>
+                        </div>
+
+                        <div class="card text-white text-right bg-primary mb-3">
+                            <div class="card-header" style="text-align:right">  تسویه حساب با فروشندگان</div>
+                            <div class="card-body">
+                                <h5 class="card-title" style="text-align:right">در این قسمت وضعیت تسویه حساب ها با فروشندگان را آدمین میتواند مشاهده بکنید و با فروشندگان تسویه بکند . اطلاعات فروشندگان قابل مشاهده می باشد</h5>
+                                <p class="card-text" style="text-align:right"><a class="text-orange" style="color:orange" id="colorhover" asp-area="Admins" asp-controller="Seller" asp-action="ListPaymentSeller">برای ادامه اینجا کلیک بکنید</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                لیست ایتم های مدیریت
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>عنوان</th>
+                                                <th>توضیح</th>
+                                                <th>لینک</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>صفحه تماس با ما</td>
+                                                <td>مدیریت صفحه تماس با ما</td>
+                                                <td> <a style="color:orange" id="colorhover" href="/admin/Contacts">تماس با ما</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>مدیریت صفحه بلاگ</td>
+                                                <td>از این قسمت میتوانید صفحه بلاگ را مدیریت بکنید</td>
+                                                <td>  <a href="/admin/Blogs"style="color:orange" id="colorhover">صفحه بلاگ</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>تماس با ما مطالب</td>
+                                                <td>تماس با ما مطالب</td>
+                                                <td>  <a href="/admin/ContactText"style="color:orange" id="colorhover">تماس با ما مطالب</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>محصولات</td>
+                                                <td>از این بخش میتوانید محصولات را مدیریت بکنید</td>
+                                                <td><a href="/admin/Products"style="color:orange" id="colorhover"> محصولات</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>درباره ما</td>
+                                                <td>از این بخش میتوانید صفحه درباره ما را مدیریت بکنید</td>
+                                                <td><a href="/admin/Abouts"style="color:orange" id="colorhover"> درباره ما</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>مجوز ها</td>
+                                                <td>از این بخش میتوانید مجوز هارا مدیریت بکنید</td>
+                                                <td> <a href="/admin/Licesis"style="color:orange" id="colorhover">مجوز ها</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>لوگو ها</td>
+                                                <td>از این بخش میتوانید لوگو را مدیریت بکنید</td>
+                                                <td> <a href="/admin/Logos"style="color:orange" id="colorhover">لوگو</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>متن تیکت ها </td>
+                                                <td>از این بخش میتوانید متن تیکت ها را مدیریت بکنید</td>
+                                                <td>  <a href="/admin/MessageTicket"style="color:orange" id="colorhover">متن تیکت ها</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>عنوان های سبد خرید </td>
+                                                <td>از این بخش میتوانید عنوان های سبد خرید را مدیریت بکنید</td>
+                                                <td>  <a href="/admin/TBasket"style="color:orange" id="colorhover"> عنوان های سبد خرید در صفحه اصلی</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> جزئیات سفارش </td>
+                                                <td>از این بخش میتوانید جزئیات سفارش را مدیریت بکنید</td>
+                                                <td> <a href="/admin/OrderDetails"style="color:orange" id="colorhover">جزئیات سفارش</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td> سفارش </td>
+                                                <td>از این بخش میتوانید سفارش را مدیریت بکنید</td>
+                                                <td>    <a href="/admin/Orders"style="color:orange" id="colorhover"> سفارش</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td> گروه ها و زیر گروه ها </td>
+                                                <td>از این بخش میتوانید گروه ها و زیر گروه ها را مدیریت بکنید</td>
+                                                <td>    <a href="/admin/Category"style="color:orange" id="colorhover"> گروه ها</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td> ویژگی اول سایت </td>
+                                                <td>از این بخش میتوانید ویژگی اول سایت را مدیریت بکنید</td>
+                                                <td> <a href="/admin/Properties"style="color:orange" id="colorhover">ویژگی اول سایت</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td> فروشنده </td>
+                                                <td>از این بخش میتوانید فروشنده را مدیریت بکنید</td>
+                                                <td><a href="/admin/Sellers"style="color:orange" id="colorhover">فروشنده</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> بنرها </td>
+                                                <td>از این بخش میتوانید بنرها را مدیریت بکنید</td>
+                                                <td>  <a href="/admin/SiteBanners"style="color:orange" id="colorhover">بنرها</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td> اسلایدر </td>
+                                                <td>از این بخش میتوانید اسلایدر را مدیریت بکنید</td>
+                                                <td>   <a href="/admin/Sliders"style="color:orange" id="colorhover">اسلایدر</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> شبکه اجتماعی </td>
+                                                <td>از این بخش میتوانید شبکه اجتماعی را مدیریت بکنید</td>
+                                                <td>    <a href="/admin/Socials"style="color:orange" id="colorhover">شبکه اجتماعی</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> تیکت ها </td>
+                                                <td>از این بخش میتوانید تیکت ها را مدیریت بکنید</td>
+                                                <td>  <a href="/admin/Tickets"style="color:orange" id="colorhover">تیکت ها</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> تماس با ما در قسمت فوتر و صفه تماس با ما </td>
+                                                <td>از این بخش میتوانید تماس با ما در قسمت فوتر و صفه تماس با ما را مدیریت بکنید</td>
+                                                <td>  <a href="/admin/contactsetting"style="color:orange" id="colorhover">تماس با ما در قسمت فوتر و صفه تماس با ما</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>کاربران </td>
+                                                <td>از این بخش میتوانید کاربران را مدیریت بکنید</td>
+                                                <td> <a href="/admin/Users"style="color:orange" id="colorhover">کاربران</a></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>کیف پول </td>
+                                                <td>از این بخش میتوانید کیف پول را مدیریت بکنید</td>
+                                                <td> <a href="/admin/WalletSellers"style="color:orange" id="colorhover">کیف پول</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

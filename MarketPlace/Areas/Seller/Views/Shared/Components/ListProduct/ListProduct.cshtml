@@ -1,0 +1,86 @@
+﻿@using MarketPlace.Application.Extensions
+@using MarketPlace.Application.Utils
+@using MarketPlace.DataLayer.Entities.Products
+@model MarketPlace.DataLayer.DTOs.Products.FilterProductDTO
+@{
+   var products = ViewData["Product"] as List<Product>;
+}
+
+
+
+@if (products != null && products.Any())
+{
+    <div class="table-favorites">
+        <table class="table ns-table table-profile-favorites">
+            <thead>
+                <tr>
+                    <th scope="col" width="50"> </th>
+                    <th>تصویر</th>
+                    <th>عنوان محصول</th>
+                    <th>وضعیت</th>
+                    <th>دستورات</th>
+                    <th class="actions-th"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in products)
+                {
+                    <tr>
+                        <td>
+                            @product.Title
+
+                        </td>
+                        <td>
+                            <span class="amount">
+                                @product.Price
+                                <span>تومان</span>
+                            </span>
+                        </td>
+
+                    </tr>
+                    <tr class="spacer"></tr>
+                }
+            </tbody>
+        </table>
+        @foreach (var product in products)
+        {
+            <div class="profile-recent-fav">
+                <a class="img-profile-favorites">
+                    <img src="@(PathExtension.ProductThumbnailImage + product.ImageName)" width="75" />
+                </a>
+                <div class="profile-recent-fav-col">
+                    <a>سامسونگ گلکسی اس 10 پلاس – 128 گیگابایت – دو سیم کارت</a>
+                </div>
+                <div class="profile-recent-fav-col">
+
+                    @product.ProductAcceptanceState.GetEnumName() / @(product.IsActive ? "فعال": "غیرفعال")
+                    @if (product.ProductAcceptanceState == ProductAcceptanceState.Rejected)
+                    {
+                        <hr />
+                        <div class="text-danger">
+                            @Html.Raw(product.ProductAcceptOrRejectDescription)
+                        </div>
+                    }
+                </div>
+                <div class="profile-recent-fav-price">
+                    <span class="amount">
+                        <a asp-area="Seller" asp-controller="Product" asp-action="EditProduct" asp-route-productId="@product.Id" class="btn btn-warning">ویرایش محصول</a>
+
+                    </span>
+                </div>
+                <div class="profile-recent-fav-price">
+                    <span class="amount">
+                        <a asp-area="Seller" asp-controller="Product" asp-action="EditProduct" asp-route-productId="@product.Id" class="btn btn-warning">ویرایش محصول</a>
+                    </span>
+                </div>
+
+            </div>
+        }
+
+    </div>
+}
+else
+{
+    <partial name="_NoItemFound" />
+}
+<!-- profile------------------------------->

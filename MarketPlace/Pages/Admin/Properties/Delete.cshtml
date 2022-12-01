@@ -1,0 +1,77 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Properties.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>حذف</h2>
+
+                        <h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+                        <div>
+                            <h4>ویژگی ها</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Property.ImageName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Property.ImageName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Property.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Property.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Property.Text)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Property.Text)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Property.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Property.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Property.CreateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Property.CreateDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Property.LastUpdateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Property.LastUpdateDate)
+                                </dd>
+                            </dl>
+
+                            <form method="post">
+                                <input type="hidden" asp-for="Property.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-page="./Index">برگشت به لیست</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

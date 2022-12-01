@@ -1,0 +1,114 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Sellers.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>حذف</h2>
+
+                        <h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+                        <div>
+                            <h4>فروشنده</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.StoreName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.StoreName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.Phone)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.Phone)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.Mobile)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.Mobile)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.Address)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.Address)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.Description)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.Description)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.AdminDescription)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.AdminDescription)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.StoreAcceptanceDescription)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.StoreAcceptanceDescription)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.StoreAcceptanceState)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.StoreAcceptanceState)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.User)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.User.EmailActiveCode)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.CreateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.CreateDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Seller.LastUpdateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Seller.LastUpdateDate)
+                                </dd>
+                            </dl>
+
+                            <form method="post">
+                                <input type="hidden" asp-for="Seller.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-page="./Index">برگشت به لیست</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,84 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Contacts.IndexModel
+
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                      
+                        <p>
+                            <a asp-page="Create">ایجاد کردن</a>
+                        </p>
+                        <div>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ContactUs[0].UserIp)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ContactUs[0].Email)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ContactUs[0].FullName)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ContactUs[0].Subject)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ContactUs[0].Text)
+                                            </th>
+                                            <th scope="col">
+                                                کاربر
+                                            </th>
+                                           @* <th scope="col">
+                                                @Html.DisplayNameFor(model => model.ContactUs[0].IsDelete)
+                                            </th>*@
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        @foreach (var item in Model.ContactUs)
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.ContactUs[0].UserIp)">@Html.DisplayFor(modelItem => item.UserIp)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.ContactUs[0].Email)">@Html.DisplayFor(modelItem => item.Email)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.ContactUs[0].FullName)">@Html.DisplayFor(modelItem => item.FullName)</td>
+
+                                                <td data-label="@Html.DisplayNameFor(model => model.ContactUs[0].Subject)">@Html.DisplayFor(modelItem => item.Subject)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.ContactUs[0].Text)"> @Html.DisplayFor(modelItem => item.Text)</td>
+                                                <td data-label="کاربر">@Html.DisplayFor(modelItem => item.User.LastName)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

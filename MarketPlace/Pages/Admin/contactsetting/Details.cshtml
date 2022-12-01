@@ -1,0 +1,100 @@
+﻿@page
+@model MarketPlace.Pages.Admin.contactsetting.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>تنظیمات سایت</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.Mobile)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.Mobile)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.Phone)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.Phone)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.Email)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.Email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.FooterText)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.FooterText)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.CopyRight)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.CopyRight)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.MapScript)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.MapScript)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.AboutUs)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.AboutUs)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.Address)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.Address)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.IsDefault)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.IsDefault)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SiteSetting.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.SiteSetting.IsDelete)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.SiteSetting.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

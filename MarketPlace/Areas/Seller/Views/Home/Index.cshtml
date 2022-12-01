@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "پنل فروشندگی";
+}
+
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>@ViewData["Title"]</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SellerSidebar")
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+
+
+                    <div class="card text-white text-right bg-primary mb-3">
+                        <div class="card-header" style="text-align:right">آپلود محصول</div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align:right">از این قسمت میتوانید محصولات خود را بارگزاری بکنید</h5>
+                            <p class="card-text" style="text-align:right"><a style="color:orange" id="colorhover" href="/Seller/create-product">برای ادامه اینجا کلیک کنید</a></p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white text-right bg-primary mb-3">
+                        <div class="card-header" style="text-align:right">تخفیفات</div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align:right">از این قسمت بروی محصولات خود تخفیف اعمال بکنید</h5>
+                            <p class="card-text" style="text-align:right"><a style="color:orange" id="colorhover" href="/Seller/create-discount">برای ادامه اینجا کلیک کنید</a></p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white text-right bg-primary mb-3">
+                        <div class="card-header" style="text-align:right">کیف پول</div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align:right">از این قسمت میتوانید کیف پول خود را مشاهده نمایید</h5>
+                            <p class="card-text" style="text-align:right"><a style="color:orange" id="colorhover" href="/Seller/seller-wallet">برای ادامه اینجا کلیک کنید</a></p>
+                        </div>
+                    </div>
+
+                    <div class="card text-white text-right bg-primary mb-3">
+                        <div class="card-header" style="text-align:right">جزئیات فروش ها</div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align:right">از این قسمت میتوانید مشخصات کاربرانی که محصولات شما را خریده اند مشاهده نمایید</h5>
+                            <p class="card-text" style="text-align:right"><a style="color:orange" id="colorhover" asp-area="Seller" asp-controller="SellerWallet" asp-action="detail">برای ادامه اینجا کلیک کنید</a></p>
+                        </div>
+                    </div>
+
+
+                 @*   <div>
+                        <h3>لیست سفارشات</h3>
+                        <p>تخفیف <a href="/Seller/detail">مشاهده</a></p>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,97 @@
+﻿@using MarketPlace.DataLayer.DTOs
+@using MarketPlace.DataLayer.Entities.Products
+@using MarketPlace.Application.Utils
+@model Tuple<List<ShowCourseListItemViewModel>, int>
+
+
+@{
+    List<ProductCategory> groups = ViewBag.Groups as List<ProductCategory>;
+    List<int> selected = ViewBag.selectedGroups as List<int>;
+}
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>فروشگاه</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!--shop  area start-->
+<div class="shop_area shop_fullwidth mt-60 mb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!--shop wrapper start-->
+
+                <div class="row shop_wrapper">
+                    @foreach (var item in Model.Item1.Where(g => g.IsDelete == false))
+                    {
+                        <div class="col-xl-3 col-md-4 col-sm-6">
+                            <article class="single_product">
+                                <figure>
+                                    <div class="product_thumb">
+                                        <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()"><img src="@(PathExtension.ProductImage + item.ImageName)" alt="@item.Title"></a>
+                                        <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()"><img src="@(PathExtension.ProductImage + item.ImageName)" alt="@item.Title"></a>
+                                        <div class="label_product">
+                                            <span class="label_sale">فروش</span>
+                                        </div>
+                                        <div class="add_to_cart">
+                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()" title="افزودن به سبد">افزودن به سبد</a>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content">
+                                        <div class="price_box">
+
+                                            <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                        </div>
+
+                                        <h3 class="product_name grid_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">@item.Title</a></h3>
+                                    </div>
+                                    <div class="product_content list_content">
+                                        <div class="left_caption">
+                                            <div class="price_box">
+
+                                                <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                            </div>
+                                            <h3 class="product_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">>@item.Title</a></h3>
+
+                                            <div class="product_desc">
+                                                <p>>@item.ShortDescription</p>
+                                            </div>
+                                        </div>
+                                        <div class="right_caption">
+                                            <div class="add_to_cart">
+                                                <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()" title="افزودن به سبد">افزودن به سبد</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </figure>
+                            </article>
+
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+            <!--shop wrapper end-->
+        </div>
+    </div>
+</div>
+<!--shop  area end-->

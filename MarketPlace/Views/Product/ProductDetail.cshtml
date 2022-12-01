@@ -1,0 +1,251 @@
+﻿@using MarketPlace.Application.Utils
+@using MarketPlace.DataLayer.DTOs.Orders
+@model MarketPlace.DataLayer.DTOs.Products.ProductDetailDTO
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@section scripts
+{
+<partial name="_JqueryValidators" />
+
+    @if (Model.ProductColors != null && Model.ProductColors.Any())
+    {
+        var firstColor = Model.ProductColors.FirstOrDefault();
+
+<script>
+    $(document).ready(function() {
+        changeProductPriceBasedOnColor(@firstColor.Id, @firstColor.Price, '@firstColor.ColorName');
+    });
+</script>
+    }
+}
+
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li>جزئیات محصول</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!--product details start-->
+<div class="product_details mt-60 mb-60">
+    <div class="container">
+        <div class="row">
+            <partial name="_AddProductToCartPartial" model="@(new AddProductToOrderDTO{Count = 1, ProductId = Model.ProductId})" />
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-tab">
+                    <div id="img-1" class="zoomWrapper single-zoom">
+                        <a href="#">
+                            <img id="zoom1" src="@(PathExtension.ProductImage + Model.ImageName)" data-zoom-image="@(PathExtension.ProductImage + Model.ImageName)" alt="@Model.Title">
+                        </a>
+                    </div>
+                    <div class="single-zoom-thumb">
+                        <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+                            <li>
+                                <a href="#" class="elevatezoom-gallery active" data-update="" data-image="@(PathExtension.ProductImage + Model.ImageName)" data-zoom-image="@(PathExtension.ProductImage + Model.ImageName)">
+                                    <img src="@(PathExtension.ProductImage + Model.ImageName)" alt="@Model.Title">
+                                </a>
+
+                            </li>
+                            @if (Model.ProductGalleries != null && Model.ProductGalleries.Any())
+                            {
+                                foreach (var gallery in Model.ProductGalleries)
+                                {
+                                    <li>
+                                        <a href="#" class="elevatezoom-gallery" data-update="" data-image="@(PathExtension.ProductGalleryImage + gallery.ImageName)" data-zoom-image="@(PathExtension.ProductGalleryImage + gallery.ImageName)">
+                                            <img src="@(PathExtension.ProductGalleryImage + gallery.ImageName)" alt="@Model.Title">
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product_d_right">
+
+                    <h1>@Model.Title</h1>
+
+
+                    <div class="price_box">
+                        @if (Model.ProductColors != null && Model.ProductColors.Any())
+                        {
+                            var firstColor = Model.ProductColors.FirstOrDefault();
+                            <span class="current_price">@((Model.Price + firstColor.Price).ToString("#,0 تومان")) ( @firstColor.ColorName )</span>
+                        }
+                        else
+                        {
+                            <span class="current_price"> @Model.Price.ToString("#,0 تومان") </span>
+                        }
+                        @* <span class="old_price">80,000 تومان</span> *@
+
+                    </div>
+                    <div class="product_desc">
+                        <p>
+                            @Model.ShortDescription
+                        </p>
+                    </div>
+                    <input type="hidden" name="product_price" value="@Model.Price" id="ProductBasePrice" />
+                    @if (Model.ProductColors != null && Model.ProductColors.Any())
+                    {
+                        <div class="product_variant color">
+                            <h3>گزینه های در دسترس</h3>
+                            <label>رنگ</label>
+                            <ul>
+                                @foreach (var color in Model.ProductColors)
+                                {
+                                    <li style="background: @color.ColorCode">
+                                        <a onclick="changeProductPriceBasedOnColor(@color.Id,@color.Price, '@color.ColorName')"></a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @if (Model.Seller != null)
+                    {
+                        <div class="product_variant color">
+                            <h3>فروشنده : </h3>
+                            <label>@Model.Seller.User.LastName</label>
+                            @if (Model.Seller.User.Avatar != null)
+                            {
+                                <div class="col-md-3">
+                                    <img style="border-radius:50%; width:150px" src="@(!string.IsNullOrEmpty(Model.Seller.User.Avatar) ? MarketPlace.Application.Utils.PathExtension.UserAvatarOrigin + Model.Seller.User.Avatar : MarketPlace.Application.Utils.PathExtension.DefaultAvatar)" alt="Alternate Text" />
+                                </div>
+                            }
+                        </div>
+                    }
+                    <div class="product_variant quantity">
+                        <label>تعداد</label>
+                        <input min="1" max="100" value="1" type="number" id="number_of_products_in_basket">
+                        <button class="button" type="submit" id="submitOrderForm">افزودن به سبد</button>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product details end-->
+<!--product info start-->
+<div class="product_d_info mb-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product_d_inner">
+                    <div class="product_info_button">
+                        <ul class="nav" role="tablist">
+                            <li>
+                                <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">توضیحات</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">مشخصات فنی</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="info" role="tabpanel">
+                            <div class="product_info_content">
+                                @Html.Raw(Model.Description)
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="sheet" role="tabpanel">
+                            @if (Model.ProductFeatures != null && Model.ProductFeatures.Any())
+                            {
+                                <div class="product_d_table">
+                                    <table>
+                                        <tbody>
+                                            @foreach (var feature in Model.ProductFeatures)
+                                            {
+                                                <tr>
+                                                    <td class="first_child">@feature.FeatureTitle</td>
+                                                    <td>@feature.FeatureValue</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product info end-->
+@if (Model.RelatedProducts != null && Model.RelatedProducts.Any())
+{
+    <!--product area start-->
+    <section class="product_area related_products">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>محصولات مرتبط</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="product_carousel product_column5 owl-carousel">
+                @foreach (var product in Model.RelatedProducts.Where(g => g.IsActive == true))
+                {
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@product.Id" asp-route-title="@product.Title.FixTextForUrl()">
+                                    <img src="@(PathExtension.ProductImage + product.ImageName)" alt="">
+                                </a>
+                                <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@product.Id" asp-route-title="@product.Title.FixTextForUrl()">
+                                    <img src="@(PathExtension.ProductImage + product.ImageName)" alt="">
+                                </a>
+                                <div class="label_product">
+                                    <span class="label_sale">فروش</span>
+                                </div>
+                                <div class="add_to_cart">
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@product.Id" asp-route-title="@product.Title.FixTextForUrl()" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
+                                </div>
+                            </div>
+                            <div class="product_content grid_content">
+                                <div class="price_box">
+
+                                    <span class="current_price">@product.Price.ToString("#,0") تومان</span>
+                                </div>
+
+
+                                <h3 class="product_name grid_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@product.Id" asp-route-title="@product.Title.FixTextForUrl()">@product.Title</a></h3>
+                            </div>
+                            <div class="product_content list_content">
+                                <div class="left_caption">
+                                    <div class="price_box">
+
+                                        <span class="current_price">@product.Price.ToString("#,0") تومان</span>
+                                    </div>
+                                    <h3 class="product_name"><a href="product-details.html">@product.Title</a></h3>
+
+                                    <div class="product_desc">
+                                        <p>@product.ShortDescription</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+    <!--product area end-->
+}

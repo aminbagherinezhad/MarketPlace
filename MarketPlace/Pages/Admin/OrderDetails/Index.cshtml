@@ -1,0 +1,76 @@
+﻿@page
+@model MarketPlace.Pages.Admin.OrderDetails.IndexModel
+
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                      
+                        <p>
+                            <a asp-page="Create">ایجاد کردن</a>
+                        </p>
+                        <div>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetail[0].Count)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.OrderDetail[0].ProductPrice)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.OrderDetail[0].ProductColorPrice)
+                                            </th>
+                                            <th scope="col">
+                                                سفارش
+                                            </th>
+                                            <th scope="col">
+                                                محصول
+                                            </th>
+                                        
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                  
+                                        @foreach (var item in Model.OrderDetail)
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.OrderDetail[0].Count)">@Html.DisplayFor(modelItem => item.Count)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.OrderDetail[0].ProductPrice)">@Html.DisplayFor(modelItem => item.ProductPrice)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.OrderDetail[0].ProductColorPrice)">@Html.DisplayFor(modelItem => item.ProductColorPrice)</td>
+                                                <td data-label="سفارش">@Html.DisplayFor(modelItem => item.Order.Id)</td>
+                                                <td data-label="محصول">@Html.DisplayFor(modelItem => item.Product.Title)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

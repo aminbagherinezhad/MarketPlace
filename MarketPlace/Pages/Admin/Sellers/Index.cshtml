@@ -1,0 +1,93 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Sellers.IndexModel
+
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                   
+                        <p>
+                            <a asp-page="Create">ایجاد کردن</a>
+                        </p>
+                        <div>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].User.LastName)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].Phone)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].Mobile)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].Address)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].Description)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].AdminDescription)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].StoreAcceptanceDescription)
+                                            </th>
+                                            <th scope="col">
+                                                وضعیت
+                                            </th>
+                                            <th scope="col">
+                                                کاربر
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Seller[0].IsDelete)
+                                            </th>
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Seller)
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.Seller[0].User.LastName)">@Html.DisplayFor(modelItem => item.User.LastName)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Seller[0].Phone)">@Html.DisplayFor(modelItem => item.Phone)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Seller[0].Mobile)">@Html.DisplayFor(modelItem => item.Mobile)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Seller[0].Address)">@Html.DisplayFor(modelItem => item.Address)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Seller[0].Description)">@Html.DisplayFor(modelItem => item.Description)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Seller[0].AdminDescription)">@Html.DisplayFor(modelItem => item.AdminDescription)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Seller[0].StoreAcceptanceDescription)">@Html.DisplayFor(modelItem => item.StoreAcceptanceDescription)</td>
+                                                <td data-label="وضعیت">@Html.DisplayFor(modelItem => item.StoreAcceptanceState)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@model List<MarketPlace.DataLayer.Entities.Mazholar.Social>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var slider in Model)
+    {
+          <li><a class="@slider.Class" href="@slider.Href" title="@slider.Class"><i class="@slider.Icon"></i></a></li>
+    }
+}

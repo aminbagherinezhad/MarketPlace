@@ -1,0 +1,84 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Category.DeleteModel
+
+@{
+    ViewData["Title"] = "پاک کردن";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>حذف محصول</h2>
+
+                        <h3>آیا از حذف این گروه مطمئن هستین ؟</h3>
+                        <div>
+                            <h4>گروه ها و زیر گروه ها</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.UrlName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.UrlName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.IsActive)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.IsActive)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.Parent)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.Parent.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.CreateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.CreateDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.LastUpdateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.LastUpdateDate)
+                                </dd>
+                            </dl>
+
+                            <form method="post">
+                                <input type="hidden" asp-for="ProductCategory.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-page="./Index">برگشت به صفحه اصلی</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

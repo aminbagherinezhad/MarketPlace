@@ -1,0 +1,81 @@
+﻿@page
+@model MarketPlace.Pages.Admin.OrderDetails.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>جزئیات فروش</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.Count)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.Count)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.ProductPrice)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.ProductPrice)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.ProductColorPrice)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.ProductColorPrice)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.Order)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.Order.Id)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.Product)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.Product.Description)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.ProductColor)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.ProductColor.ColorCode)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDetail.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDetail.IsDelete)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.OrderDetail.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

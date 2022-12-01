@@ -1,0 +1,87 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Products.IndexModel
+
+@{
+    ViewData["Title"] = "صفحه اصلی";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <p>
+                            <a asp-page="Create">ایجاد کردن</a>
+                        </p>
+                        <div>
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Product[0].Title)
+                                            </th>
+                                       
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Product[0].Price)
+                                            </th>
+                                     
+                                          
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Product[0].ProductAcceptOrRejectDescription)
+                                            </th>
+                                       
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Product[0].ProductAcceptanceState)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Product[0].SiteProfit)
+                                            </th>
+                                            <th scope="col">
+                                                محل قرار گیری محصول در صفحه اصلی
+                                            </th>
+                                            <th scope="col">
+                                                فروشنده
+                                            </th>
+                                          
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      
+                                        @foreach (var item in Model.Product)
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.Product[0].Title)">@Html.DisplayFor(modelItem => item.Title)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Product[0].Price)">@Html.DisplayFor(modelItem => item.Price)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Product[0].ProductAcceptOrRejectDescription)">@Html.DisplayFor(modelItem => item.ProductAcceptOrRejectDescription)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Product[0].ProductAcceptanceState)">@Html.DisplayFor(modelItem => item.ProductAcceptanceState)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Product[0].SiteProfit)">@Html.DisplayFor(modelItem => item.SiteProfit)</td>
+                                                <td data-label="محل قرار گیری محصول در صفحه اصلی">@Html.DisplayFor(modelItem => item.Placement)</td>
+                                                <td data-label="فروشنده">@Html.DisplayFor(modelItem => item.Seller.StoreName)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

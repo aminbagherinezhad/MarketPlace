@@ -1,0 +1,136 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Users.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد کردن";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>ایجاد کردن</h2>
+
+<h4>کاربر</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="User.Email" class="control-label">ایمیل</label>
+                <input asp-for="User.Email" class="form-control" />
+                <span asp-validation-for="User.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.EmailActiveCode" class="control-label">کد تایید ایمیل</label>
+                <input asp-for="User.EmailActiveCode" class="form-control" />
+                <span asp-validation-for="User.EmailActiveCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="User.IsEmailActive" /> @Html.DisplayNameFor(model => model.User.IsEmailActive)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Mobile" class="control-label">موبایل</label>
+                <input asp-for="User.Mobile" class="form-control" />
+                <span asp-validation-for="User.Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.MobileActiveCode" class="control-label">کد تایید موبایل</label>
+                <input asp-for="User.MobileActiveCode" class="form-control" />
+                <span asp-validation-for="User.MobileActiveCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="User.IsMobileActive" /> @Html.DisplayNameFor(model => model.User.IsMobileActive)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Password" class="control-label">پسورد</label>
+                <input asp-for="User.Password" class="form-control" />
+                <span asp-validation-for="User.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.FirstName" class="control-label">اسم کوچک</label>
+                <input asp-for="User.FirstName" class="form-control" />
+                <span asp-validation-for="User.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastName" class="control-label">نام خانوادگی</label>
+                <input asp-for="User.LastName" class="form-control" />
+                <span asp-validation-for="User.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Avatar" class="control-label">پروفایل</label>
+                <input asp-for="User.Avatar" class="form-control" />
+                <span asp-validation-for="User.Avatar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Address" class="control-label">آدرس</label>
+                <input asp-for="User.Address" class="form-control" />
+                <span asp-validation-for="User.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="User.IsBlocked" /> @Html.DisplayNameFor(model => model.User.IsBlocked)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="User.IsAdmin" /> @Html.DisplayNameFor(model => model.User.IsAdmin)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="User.IsDelete" /> @Html.DisplayNameFor(model => model.User.IsDelete)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.CreateDate" class="control-label">تاریخ ایجاد</label>
+                <input asp-for="User.CreateDate" class="form-control" />
+                <span asp-validation-for="User.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.LastUpdateDate" class="control-label">تاریخ بروزرسانی</label>
+                <input asp-for="User.LastUpdateDate" class="form-control" />
+                <span asp-validation-for="User.LastUpdateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">برگشت به لیست</a>
+</div>
+
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

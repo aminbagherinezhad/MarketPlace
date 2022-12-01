@@ -1,0 +1,107 @@
+﻿@using MarketPlace.Application.Utils
+@using MarketPlace.Application.Extensions
+@using MarketPlace.DataLayer.Entities.Wallet
+@using MarketPlace.DataLayer.Entities.Store
+@model IEnumerable<MarketPlace.DataLayer.Entities.Wallet.SellerWallet>
+@{
+    ViewData["Title"] = "تسویه حساب فروشنده ها";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var Sellers = ViewData["Seller"] as List<Seller>;
+}
+
+
+@section scripts
+{
+<partial name="_JqueryValidators" />
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <div class="tab-pane active show" id="account-details">
+                            <h3></h3>
+                            <form method="get" asp-area="Admins" asp-controller="Seller" asp-action="ListPaymentSeller" id="filter-form">
+                                @*<input type="hidden" asp-for="PageId" />*@
+                                <div class="table-responsive">
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>شناسه</th>
+                                                    <th>واریز/برداشت</th>
+                                                    <th>قیمت</th>
+
+                                                    <th>زمان واریزی</th>
+                                                    <th>توضیحات</th>
+                                                    <th>وضعیت پرداخت</th>
+                                                    <th>اسم فروشگاه</th>
+                                                    <th>شماهر موبایل</th>
+                                                    <th>شماره حساب</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var wallet in Model)
+                                                {
+                                                    <tr>
+                                                        <td>@wallet.Id</td>
+                                                        @if (wallet.TransactionType != TransactionType.Withdrawal)
+                                                        {
+                                                            <td>
+                                                                <a class="btn btn-success" ajax-url-button="@wallet.Id" asp-area="Admins" asp-controller="Seller" asp-action="SendMoneyForSeller" asp-route-id="@wallet.Id">تسویه واریزی</a>
+                                                            </td>
+                                                        }
+                                                        <td>@wallet.Price</td>
+                                                        <td>@wallet.CreateDate.ToShamsiDateTime()</td>
+
+                                                        <td>@wallet.Description</td>
+                                                        @if (@wallet.TransactionType == TransactionType.Withdrawal)
+                                                        {
+                                                            <td>با فروشنده تسویه شد</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>در انتظار تسویه</td>
+                                                        }
+
+
+                                                        <td>
+
+                                                            @foreach (var item in Sellers.Where(s => s.Id == wallet.SellerId))
+                                                            {
+                                                            <td>@item.StoreName</td>
+                                                            <td>@item.Mobile</td>
+                                                            <td>@item.BankNumber</td>
+
+                                                            }
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                    }
+                                    else
+                                    {
+                                        <partial name="_NoItemFound" />
+                                    }
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

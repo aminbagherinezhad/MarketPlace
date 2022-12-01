@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> فروشگاه ساز | @ViewData["Title"] </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+
+    <!-- CSS
+    ========================= -->
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="~/css/plugins.css">
+    <link rel="stylesheet" href="~/css/notifications.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/css/style3.css">
+    <link rel="stylesheet" href="~/css/waitMe.min.css">
+    <link rel="stylesheet" href="~/lib/persianDatepicker-master/css/persianDatepicker-default.css">
+    <link rel="stylesheet" href="~/css/custom.css">
+    @RenderSection("jsckeditor", false)
+    @RenderSection("styles", false)
+</head>
+
+<body>
+    @await Component.InvokeAsync("SiteHeader")
+    @RenderBody()
+    @await Component.InvokeAsync("SiteFooter")
+    <partial name="_FooterReferences" />
+    @RenderSection("scripts", false)
+    <partial name="_SiteMessages" />
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MarketPlace.DataLayer.Entities.Account.User>
+
+
+    @foreach (var item in Model)
+{
+    <tr>
+        <td>@item.FirstName  @item.LastName</td>
+        <td>@item.Email</td>
+        <td>@item.Mobile</td>
+    </tr>
+}

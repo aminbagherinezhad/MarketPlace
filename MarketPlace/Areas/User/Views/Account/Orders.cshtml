@@ -1,0 +1,102 @@
+﻿@model MarketPlace.DataLayer.DTOs.Account.EditUserProfileDTO
+@using MarketPlace.DataLayer.Entities.Account
+@using MarketPlace.Application.Utils
+@using MarketPlace.DataLayer.Entities.ProductOrder
+@using MarketPlace.Application.EntitiesExtensions
+@{
+    ViewData["Title"] = "سفارشات";
+
+    var Order = ViewData["Order"] as List<Order>;
+}
+
+
+<!-- profile------------------------------->
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="/">خانه</a></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                   @await Component.InvokeAsync("UserSidebar")
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade active show" id="account-details">
+                            <table class="table table-profile-orders" style="margin-top:10px">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">شماره سفارش</th>
+                                        <th scope="col">وضعیت پرداخت</th>
+                                        <th scope="col">پیگیری</th>
+                                       @* <th scope="col">عنوان محصول</th>
+                                        <th scope="col">تعداد</th>
+                                        <th scope="col">قیمت محصول</th>
+                                        <th scope="col">قیمت افزوده رنگ محصول</th>*@
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        foreach (var item in Order.Where(g => g.UserId == Model.UserId))
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="شماره سفارش" class="order-code">@item.Id</td>
+
+                                                @*<td class="Waiting text-success">@item.PaymentDate.Value.ToShamsiDateTime()</td>*@
+
+                                                @if (@item.IsPaid == true)
+                                                {
+                                                    <td data-label="وضعیت پرداخت" class="Waiting text-success">پرداخت شده است</td>
+                                                }
+                                                else
+                                                {
+                                                    <td data-label="وضعیت پرداخت" class="Waiting text-success">پرداخت ناموفق بوده است</td>
+                                                }
+                                                <td data-label="پیگیری" class="Waiting text-success">جهت پیگیری شماره سفارش را به پشتیبانی تیکت بزنید یا تماس بگیرید .</td>
+                                               @* @foreach (var item2 in item.OrderDetails.Where(g => g.OrderId == item.Id))
+                                                {
+                                                    <td data-label="عنوان محصول" class="order-code">@item2.Product.Title</td>
+                                                    <td data-label="تعداد" class="order-code">@item2.Count</td>
+                                                    <td data-label="قیمت محصول" class="order-code">@item2.ProductPrice</td>
+                                                    <td data-label="قیمت افزوده رنگ محصول" class="order-code">@item2.ProductColorPrice</td>
+                                                }*@
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td>هنوز سفارشی انجام نشده است</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+

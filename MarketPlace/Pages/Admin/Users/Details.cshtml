@@ -1,0 +1,124 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Users.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>جزئیات</h2>
+
+<div>
+    <h4>کاربر</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.EmailActiveCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.EmailActiveCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.IsEmailActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.IsEmailActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Mobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Mobile)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.MobileActiveCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.MobileActiveCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.IsMobileActive)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.IsMobileActive)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Avatar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Avatar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.IsBlocked)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.IsBlocked)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.IsAdmin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.IsAdmin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User.IsDelete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.IsDelete)
+        </dd>
+     
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.User.Id">ویرایش</a> |
+    <a asp-page="./Index">برگشت به لیست</a>
+</div>
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

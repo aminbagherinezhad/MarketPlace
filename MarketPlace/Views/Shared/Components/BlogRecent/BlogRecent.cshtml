@@ -1,0 +1,25 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@model List<MarketPlace.DataLayer.Entities.Mazholar.Blog>
+@using MarketPlace.Application.Utils
+
+@{
+    Layout = null;
+}
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var slider in Model.Take(3))
+    {
+
+        <div class="post_wrapper">
+            <div class="post_thumb">
+                <a href="/BlogDetail/@slider.Id"><img src="/Blog/@slider.ImageName" alt="@slider.Title"></a>
+            </div>
+            <div class="post_info">
+                <h3><a href="/BlogDetail/@slider.Id">@slider.Title</a></h3>
+                <span>@slider.Writer </span>
+            </div>
+        </div>
+
+    }
+}

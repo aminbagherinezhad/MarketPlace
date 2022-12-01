@@ -1,0 +1,145 @@
+﻿ <Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Areas\User\Views\Account\ChangePassword.cshtml" />
+    <None Include="Areas\User\Views\Account\EditProfile.cshtml" />
+    <None Include="Areas\User\Views\Home\Dashboard.cshtml" />
+    <None Include="Areas\User\Views\Shared\Components\UserSidebar\UserSidebar.cshtml" />
+    <None Include="Areas\User\Views\Shared\_AnswerTicketPartial.cshtml" />
+    <None Include="Areas\User\Views\Shared\_UserLayout.cshtml" />
+    <None Include="Areas\User\Views\Ticket\AddTicket.cshtml" />
+    <None Include="Areas\User\Views\Ticket\Index.cshtml" />
+    <None Include="Areas\User\Views\Ticket\TicketDetail.cshtml" />
+    <None Include="Areas\User\Views\_ViewImports.cshtml" />
+    <None Include="Areas\User\Views\_ViewStart.cshtml" />
+    <None Include="Views\Account\ActivateMobile.cshtml" />
+    <None Include="Views\Account\ForgotPassword.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
+    <None Include="Views\Account\Register.cshtml" />
+    <None Include="Views\Home\AboutUs.cshtml" />
+    <None Include="Views\Home\ContactUs.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="Views\Shared\Components\HomeSlider\HomeSlider.cshtml" />
+    <None Include="Views\Shared\Components\SiteFooter\SiteFooter.cshtml" />
+    <None Include="Views\Shared\Components\SiteHeader\SiteHeader.cshtml" />
+    <None Include="Views\Shared\Error.cshtml" />
+    <None Include="Views\Shared\_CaptchaInput.cshtml" />
+    <None Include="Views\Shared\_CaptchaScripts.cshtml" />
+    <None Include="Views\Shared\_FooterReferences.cshtml" />
+    <None Include="Views\Shared\_HeaderReferences.cshtml" />
+    <None Include="Views\Shared\_JqueryValidators.cshtml" />
+    <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="Views\Shared\_MainLayout.cshtml" />
+    <None Include="Views\Shared\_NoItemFound.cshtml" />
+    <None Include="Views\Shared\_SiteMessages.cshtml" />
+    <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Views\_ViewImports.cshtml" />
+    <None Include="Views\_ViewStart.cshtml" />
+    <None Include="wwwroot\fonts\aviny-700.woff2" />
+    <None Include="wwwroot\fonts\dastnevis-400.woff2" />
+    <None Include="wwwroot\fonts\droid-naskh-400.woff2" />
+    <None Include="wwwroot\fonts\dubai-400.woff2" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\fonts\gandom-400.woff2" />
+    <None Include="wwwroot\fonts\helvetica-neue-700.woff2" />
+    <None Include="wwwroot\fonts\ionicons.svg" />
+    <None Include="wwwroot\fonts\iran-sans-300.woff2" />
+    <None Include="wwwroot\fonts\iran-sans-400.woff2" />
+    <None Include="wwwroot\fonts\iran-sans-500.woff2" />
+    <None Include="wwwroot\fonts\iran-sans-700.woff2" />
+    <None Include="wwwroot\fonts\iran-yekan-300.woff2" />
+    <None Include="wwwroot\fonts\iran-yekan-400.woff2" />
+    <None Include="wwwroot\fonts\iran-yekan-500.woff2" />
+    <None Include="wwwroot\fonts\iran-yekan-700.woff2" />
+    <None Include="wwwroot\fonts\lalezar-700.woff2" />
+    <None Include="wwwroot\fonts\Material-Design-Iconic-Font.woff2" />
+    <None Include="wwwroot\fonts\myriad-400.woff2" />
+    <None Include="wwwroot\fonts\myriad-700.woff2" />
+    <None Include="wwwroot\fonts\neirizi-400.woff2" />
+    <None Include="wwwroot\fonts\palatino-sans-400.woff2" />
+    <None Include="wwwroot\fonts\sahel-400.woff2" />
+    <None Include="wwwroot\fonts\shabnam-300.woff2" />
+    <None Include="wwwroot\fonts\shabnam-400.woff2" />
+    <None Include="wwwroot\fonts\shabnam-500.woff2" />
+    <None Include="wwwroot\fonts\shabnam-700.woff2" />
+    <None Include="wwwroot\fonts\vazir-300.woff2" />
+    <None Include="wwwroot\fonts\vazir-400.woff2" />
+    <None Include="wwwroot\fonts\vazir-500.woff2" />
+    <None Include="wwwroot\fonts\vazir-700.woff2" />
+    <None Include="wwwroot\fonts\yekan-400.woff2" />
+    <None Include="wwwroot\js\ckeditor.js" />
+    <None Include="wwwroot\js\custom.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\map.js" />
+    <None Include="wwwroot\js\notifications.js" />
+    <None Include="wwwroot\js\plugins.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GoogleReCaptcha.V3" Version="1.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Core" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarketPlace.Application\MarketPlace.Application.csproj" />
+    <ProjectReference Include="..\MarketPlace.DataLayer\MarketPlace.DataLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Logo\" />
+    <Folder Include="wwwroot\Liceses\" />
+    <Folder Include="wwwroot\Blog\" />
+    <Folder Include="wwwroot\About\" />
+    <Folder Include="wwwroot\Slider\" />
+    <Folder Include="wwwroot\SiteBanner\" />
+    <Folder Include="wwwroot\Property\" />
+    <Folder Include="wwwroot\User\assets\images\menu-main\card\" />
+  </ItemGroup>
+
+</Project>

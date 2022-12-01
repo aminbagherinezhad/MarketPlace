@@ -1,0 +1,110 @@
+﻿@page
+@model MarketPlace.Pages.Admin.contactsetting.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>ویرایش</h2>
+
+                        <h4>تنظیمات سایت</h4>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <form method="post">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.Mobile" class="control-label">موبایل</label>
+                                        <input asp-for="SiteSetting.Mobile" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.Mobile" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.Phone" class="control-label">تلفن</label>
+                                        <input asp-for="SiteSetting.Phone" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.Phone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.Email" class="control-label">ایمیل</label>
+                                        <input asp-for="SiteSetting.Email" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.FooterText" class="control-label">متن در فوتر</label>
+                                        <input asp-for="SiteSetting.FooterText" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.FooterText" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.CopyRight" class="control-label">حق کپی رایت</label>
+                                        <input asp-for="SiteSetting.CopyRight" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.CopyRight" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.MapScript" class="control-label">اسکریپت نقشه</label>
+                                        <input asp-for="SiteSetting.MapScript" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.MapScript" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.AboutUs" class="control-label">درباره ما</label>
+                                        <input asp-for="SiteSetting.AboutUs" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.AboutUs" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.Address" class="control-label">آدرس</label>
+                                        <input asp-for="SiteSetting.Address" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.Address" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="SiteSetting.IsDefault" /> @Html.DisplayNameFor(model => model.SiteSetting.IsDefault)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" asp-for="SiteSetting.Id" />
+                                    <div class="form-group">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input asp-for="SiteSetting.IsDelete" /> @Html.DisplayNameFor(model => model.SiteSetting.IsDelete)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.CreateDate" class="control-label">زمان ایجاد</label>
+                                        <input asp-for="SiteSetting.CreateDate" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.CreateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="SiteSetting.LastUpdateDate" class="control-label">زمان آپدیت</label>
+                                        <input asp-for="SiteSetting.LastUpdateDate" class="form-control" />
+                                        <span asp-validation-for="SiteSetting.LastUpdateDate" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" value="Save" class="btn btn-info" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

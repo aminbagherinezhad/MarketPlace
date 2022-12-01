@@ -1,0 +1,77 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Socials.EditModel
+
+@{
+    ViewData["Title"] = "ویرایش";
+     Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>ویرایش</h2>
+
+<h4>Social</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Social.Icon" class="control-label">ایکون</label>
+                <input asp-for="Social.Icon" class="form-control" />
+                <span asp-validation-for="Social.Icon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Social.Href" class="control-label">آدرس صفحه</label>
+                <input asp-for="Social.Href" class="form-control" />
+                <span asp-validation-for="Social.Href" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Social.Class" class="control-label">کلاس</label>
+                <input asp-for="Social.Class" class="form-control" />
+                <span asp-validation-for="Social.Class" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Social.Id" />
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Social.IsDelete" /> @Html.DisplayNameFor(model => model.Social.IsDelete)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Social.CreateDate" class="control-label">تاریخ ایجاد</label>
+                <input asp-for="Social.CreateDate" class="form-control" />
+                <span asp-validation-for="Social.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Social.LastUpdateDate" class="control-label">تاریخ بروزرسانی</label>
+                <input asp-for="Social.LastUpdateDate" class="form-control" />
+                <span asp-validation-for="Social.LastUpdateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">برگشت به لیست</a>
+</div>
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

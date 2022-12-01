@@ -1,0 +1,381 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@using MarketPlace.Application.Utils
+@using MarketPlace.DataLayer.Entities.Products
+@using MarketPlace.DataLayer.Entities.Mazholar
+@using MarketPlace.DataLayer.Entities.Site
+@{
+    ViewData["Title"] = "صفحه ی اصلی";
+    var banners = ViewBag.banners as List<SiteBanner>;
+    var offProducts = ViewData["OffProducts"] as List<ProductDiscount>;
+    var Products = ViewData["Product"] as List<Product>;
+    var Basket = ViewData["Basket"] as List<TitleBasket>;
+}
+
+
+@await Component.InvokeAsync("HomeSlider")
+<!--shipping area start-->
+<section class="shipping_area mb-70">
+    <div class="container">
+        <div class=" row">
+
+            @await Component.InvokeAsync("HomeProperty")
+
+        </div>
+    </div>
+</section>
+<!--shipping area end-->
+@if (banners != null && banners.Any(s => s.BannerPlacement == BannerPlacement.Home_1))
+{
+    <!--banner area start-->
+    <div class="banner_area mb-40">
+        <div class="container">
+            <div class="row">
+
+                @foreach (var banner in banners.Where(s => s.BannerPlacement == BannerPlacement.Home_1))
+                {
+                    <div class="@banner.ColSize">
+                        <div class="single_banner mb-30">
+                            <div class="banner_thumb">
+                                <a href="@banner.Url">
+                                    <img src="@banner.GetBannerMainImageAddress()" style="width: 100%">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!--banner area end-->
+}
+@if (offProducts != null && offProducts.Any())
+{
+    <!--product area start-->
+    <section class="product_area mb-46">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_title">
+                        <h2>پیشنهاد های ویژه</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="product_carousel product_column5 owl-carousel">
+                @foreach (var discount in offProducts)
+                {
+                    <article class="single_product">
+                        <figure>
+                            <div class="product_thumb">
+                                <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@discount.ProductId" asp-route-title="@discount.Product.Title.FixTextForUrl()">
+                                    <img src="@(PathExtension.ProductImage + discount.Product.ImageName)" alt="">
+                                </a>
+                                <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@discount.ProductId" asp-route-title="@discount.Product.Title.FixTextForUrl()">
+                                    <img src="@(PathExtension.ProductImage + discount.Product.ImageName)" alt="">
+                                </a>
+                                <div class="label_product">
+                                    <span class="label_sale">@discount.Percentage%</span>
+                                </div>
+                                <div class="action_links">
+                                    <ul>
+                                        @*<li class="wishlist"><a href="wishlist.html" title="افزودن به علاقه‌مندی‌ها"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                                            <li class="compare"><a href="#" title="مقایسه"><span class="ion-levels"></span></a></li>*@
+                                        <li class="quick_button">
+                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@discount.ProductId" asp-route-title="@discount.Product.Title.FixTextForUrl()" data-toggle="modal" data-target="#modal_box" title="مشاهده سریع"> <span class="ion-ios-search-strong"></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="add_to_cart">
+                                    <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@discount.ProductId" asp-route-title="@discount.Product.Title.FixTextForUrl()" title="افزودن به سبد">افزودن به سبد</a>
+                                </div>
+                                <div class="product_timing">
+                                    <div data-countdown="@discount.ExpireDate.ToString("yyyy/MM/dd")"></div>
+                                </div>
+                            </div>
+                            <figcaption class="product_content">
+                                <div class="price_box">
+                                    <span class="old_price">@discount.Product.Price.ToString("#,0") تومان</span>
+                                    <span class="current_price">@((discount.Product.Price * (100 - discount.Percentage) / 100).ToString("#,0")) تومان</span>
+                                </div>
+                                <h3 class="product_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@discount.ProductId" asp-route-title="@discount.Product.Title.FixTextForUrl()">@discount.Product.Title</a></h3>
+                            </figcaption>
+                        </figure>
+                    </article>
+                }
+            </div>
+        </div>
+    </section>
+    <!--product area end-->
+}
+<!--banner area start-->
+<div class="banner_area mb-40">
+    <div class="container">
+        <div class="row">
+            @foreach (var banner in banners.Where(s => s.BannerPlacement == BannerPlacement.Home_2))
+            {
+                <div class="@banner.ColSize">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="@banner.Url">
+                                <img src="@banner.GetBannerMainImageAddress()" style="width: 100%">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--banner area end-->
+<!--top- category area start-->
+<section class="top_category_product mb-70">
+    <div class="container">
+        <div class="row">
+            @if (Basket != null && Basket.Any(s => s.Placement == 1))
+            {
+                <div class="col-lg-2 col-md-3">
+                    @foreach (var Baskets in Basket.Where(s => s.Placement == 1))
+                    {
+                        <div class="top_category_header">
+                            <h3>@Baskets.Title</h3>
+                            <p>@Baskets.Description</p>
+                            @*<a href="#">نمایش همه دسته ها</a>*@
+                        </div>
+                    }
+                </div>
+            }
+            <div class="col-lg-10 col-md-9">
+                <div class="top_category_container category_column5 owl-carousel">
+                    @* <cache expires-after="@TimeSpan.FromDays(1)">*@
+                    @if (Products != null && Products.Any())
+                    {
+                        @foreach (var item in Products.OrderByDescending(s => s.Id).Where(g => g.Placement == 1 && g.ProductAcceptanceState == ProductAcceptanceState.Accepted && g.IsActive == true))
+                        {
+                            <div class="col-lg-2">
+                                <article class="single_category">
+                                    <figure>
+                                        <div class="category_thumb">
+                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()"><img src="@(PathExtension.ProductImage + item.ImageName)" alt="@item.Title"></a>
+                                        </div>
+                                        <figcaption class="category_name">
+                                            <h3><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">@item.Title</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            </div>
+                        }
+
+                    }
+                    @* </cache>*@
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--top- category area end-->
+<!--featured product area start-->
+<!--product area start-->
+<section class="product_area mb-46">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    @if (Basket != null && Basket.Any(s => s.Placement == 2))
+                    {
+                        @foreach (var Baskets in Basket.Where(s => s.Placement == 2))
+                        {
+                            <h2>@Baskets.Title</h2>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="product_carousel product_column5 owl-carousel">
+            <cache expires-after="@TimeSpan.FromMinutes(1)">
+                @if (Products != null && Products.Any())
+                {
+                    @foreach (var item in Products.OrderByDescending(s => s.Id).Where(g => g.Placement == 2 && g.ProductAcceptanceState == ProductAcceptanceState.Accepted && g.IsActive == true))
+                    {
+                        <article class="single_product">
+                            <figure>
+                                <div class="product_thumb">
+                                    <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">
+                                        <img src="@(PathExtension.ProductImage + item.ImageName)" alt="">
+                                    </a>
+                                    <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">
+                                        <img src="@(PathExtension.ProductImage + item.ImageName)" alt="">
+                                    </a>
+                                    <div class="label_product">
+                                        <span class="label_sale">فروش</span>
+                                    </div>
+
+                                    <div class="add_to_cart">
+                                        <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
+                                    </div>
+                                </div>
+                                <div class="product_content grid_content">
+                                    <div class="price_box">
+
+                                        <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                    </div>
+
+                                    <h3 class="product_name grid_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">@item.Title</a></h3>
+                                </div>
+                                <div class="product_content list_content">
+                                    <div class="left_caption">
+                                        <div class="price_box">
+
+                                            <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                        </div>
+                                        <h3 class="product_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">@item.Title</a></h3>
+
+                                        <div class="product_desc">
+                                            <p>@item.ShortDescription</p>
+                                        </div>
+                                    </div>
+                                    <div class="right_caption">
+                                        <div class="add_to_cart">
+                                            <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()" title="" data-original-title="افزودن به سبد">افزودن به سبد</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </figure>
+                        </article>
+                    }
+                }
+            </cache>
+        </div>
+    </div>
+</section>
+
+<!--featured product area end-->
+@await Component.InvokeAsync("ProductSlider", new { categoryName = "mobile" })
+<!--banner area start-->
+<div class="banner_area mb-40">
+    <div class="container">
+        <div class="row">
+            @foreach (var banner in banners.Where(s => s.BannerPlacement == BannerPlacement.Home_3))
+            {
+                <div class="@banner.ColSize">
+                    <div class="single_banner mb-30">
+                        <div class="banner_thumb">
+                            <a href="@banner.Url">
+                                <img src="@banner.GetBannerMainImageAddress()" style="width: 100%">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!--banner area end-->
+<!--product area start-->
+<section class="product_area mb-46">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="product_left_area">
+                    @if (Basket != null && Basket.Any(s => s.Placement == 3))
+                    {
+                        foreach (var Baskets in Basket.Where(s => s.Placement == 3))
+                        {
+                            <div class="section_title">
+                                <h2>@Baskets.Title</h2>
+                                <p>@Baskets.Description</p>
+                            </div>
+                        }
+                    }
+
+                    <div class="product_carousel product_column4 owl-carousel">
+                        @*<cache expires-after="@TimeSpan.FromDays(1)">*@
+                        @if (Products != null && Products.Any())
+                        {
+                            @foreach (var item in Products.OrderByDescending(s => s.Id).Where(g => g.Placement == 3 && g.ProductAcceptanceState == ProductAcceptanceState.Accepted && g.IsActive == true))
+                            {
+
+                                <article class="single_product">
+                                    <figure>
+                                        <div class="product_thumb">
+                                            <a class="primary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()"><img src="@(PathExtension.ProductImage + item.ImageName)" alt="@item.Title"></a>
+                                            <a class="secondary_img" asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()"><img src="@(PathExtension.ProductImage + item.ImageName)" alt="@item.Title"></a>
+                                            <div class="label_product">
+                                                <span class="label_sale">فروش</span>
+                                            </div>
+
+                                            <div class="add_to_cart">
+                                                <a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl() title="افزودن به سبد">افزودن به سبد</a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="product_content">
+                                            <div class="price_box">
+                                                <span class="current_price">@item.Price.ToString("#,0") تومان</span>
+                                            </div>
+                                            <h3 class="product_name"><a asp-controller="Product" asp-action="ProductDetail" asp-route-productId="@item.Id" asp-route-title="@item.Title.FixTextForUrl()">@item.Title</a></h3>
+                                        </figcaption>
+                                    </figure>
+                                </article>
+                            }
+                        }
+                        @* </cache>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <!--testimonials section start-->
+                <div class="testimonial_are">
+                    <div class="section_title">
+                        <h2>دیدگاه مشتریان</h2>
+                    </div>
+                    <div class="testimonial_active owl-carousel">
+                        <cache expires-after="@TimeSpan.FromDays(1)">
+                            @if (Basket != null && Basket.Any(s => s.Placement == 4))
+                            {
+                                foreach (var Baskets in Basket.Where(s => s.Placement == 4))
+                                {
+                                    <article class="single_testimonial">
+                                        <figure>
+                                            <div class="testimonial_thumb">
+                                                <a href="#"><img src="/img/about/testimonial1.jpg" alt="فروشگاه"></a>
+                                            </div>
+                                            <figcaption class="testimonial_content">
+                                                <p>@Baskets.Title </p>
+                                                <h3><span>@Baskets.Description</span></h3>
+                                            </figcaption>
+
+                                        </figure>
+                                    </article>
+                                }
+                            }
+                        </cache>
+                    </div>
+                </div>
+                <!--testimonials section end-->
+            </div>
+        </div>
+    </div>
+</section>
+<!--product area end-->
+<!--blog area start-->
+<section class="blog_section mb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_title">
+                    <h2>بلاگ</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="blog_carousel blog_column4 owl-carousel">
+
+                @await Component.InvokeAsync("Blog")
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--blog area end-->

@@ -1,0 +1,76 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Blogs.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>بلاگ</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Blog.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Blog.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Blog.Writer)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Blog.Writer)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Blog.ShortDescription)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Blog.ShortDescription)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Blog.Text)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Blog.Text)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Blog.ImageName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Blog.ImageName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Blog.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Blog.IsDelete)
+                                </dd>
+
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.Blog.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

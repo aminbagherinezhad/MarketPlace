@@ -1,0 +1,82 @@
+﻿@page
+@model MarketPlace.Pages.Admin.WalletSellers.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد کردن";
+     Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>ایجاد کردن</h2>
+
+<h4>کیف پول فروشنده ها</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SellerWallet.SellerId" class="control-label">شناسه فروشنده</label>
+                <select asp-for="SellerWallet.SellerId" class ="form-control" asp-items="ViewBag.SellerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellerWallet.Price" class="control-label">قیمت</label>
+                <input asp-for="SellerWallet.Price" class="form-control" />
+                <span asp-validation-for="SellerWallet.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellerWallet.TransactionType" class="control-label">وضعیت</label>
+                <select asp-for="SellerWallet.TransactionType" class="form-control"></select>
+                <span asp-validation-for="SellerWallet.TransactionType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellerWallet.Description" class="control-label">توضیحات</label>
+                <input asp-for="SellerWallet.Description" class="form-control" />
+                <span asp-validation-for="SellerWallet.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="SellerWallet.IsDelete" /> @Html.DisplayNameFor(model => model.SellerWallet.IsDelete)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellerWallet.CreateDate" class="control-label">تاریخ ایجاد</label>
+                <input asp-for="SellerWallet.CreateDate" class="form-control" />
+                <span asp-validation-for="SellerWallet.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SellerWallet.LastUpdateDate" class="control-label">تاریخ بروزرسانی</label>
+                <input asp-for="SellerWallet.LastUpdateDate" class="form-control" />
+                <span asp-validation-for="SellerWallet.LastUpdateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">برگشت به لیست</a>
+</div>
+
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

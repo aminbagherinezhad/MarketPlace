@@ -1,0 +1,71 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Licesis.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+
+                        <h2>حذف</h2>
+
+                        <h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+                        <div>
+                            <h4>مجوز</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.License.ImageName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.License.ImageName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.License.Href)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.License.Href)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.License.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.License.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.License.CreateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.License.CreateDate)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.License.LastUpdateDate)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.License.LastUpdateDate)
+                                </dd>
+                            </dl>
+
+                            <form method="post">
+                                <input type="hidden" asp-for="License.Id" />
+                                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                                <a asp-page="./Index">برگشت به لیست</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

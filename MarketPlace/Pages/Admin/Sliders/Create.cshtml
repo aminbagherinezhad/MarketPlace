@@ -1,0 +1,80 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Sliders.CreateModel
+
+@{
+    ViewData["Title"] = "ایجاد کردن";
+     Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>ایجاد کردن</h2>
+
+<h4>اسلایدر</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CG.MainHeader" class="control-label">عنوان اول</label>
+                <input asp-for="CG.MainHeader" class="form-control" />
+                <span asp-validation-for="CG.MainHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CG.SecondHeader" class="control-label">عنوان دوم</label>
+                <input asp-for="CG.SecondHeader" class="form-control" />
+                <span asp-validation-for="CG.SecondHeader" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CG.ImageName" class="control-label">عکس</label>
+                <input asp-for="CG.ImageName" class="form-control" />
+                <span asp-validation-for="CG.ImageName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CG.Description" class="control-label">توضیحات</label>
+                <input asp-for="CG.Description" class="form-control" />
+                <span asp-validation-for="CG.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CG.Link" class="control-label">لینک</label>
+                <input asp-for="CG.Link" class="form-control" />
+                <span asp-validation-for="CG.Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="CG.IsActive" /> @Html.DisplayNameFor(model => model.CG.IsActive)
+                    </label>
+                </div>
+            </div>
+         
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">برگشت به لیست</a>
+</div>
+
+         </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

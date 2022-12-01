@@ -1,0 +1,70 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Category.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>جزئیات گروه ها و زیر گروه ها</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.UrlName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.UrlName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.IsActive)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.IsActive)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.Parent)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.Parent.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductCategory.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductCategory.IsDelete)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.ProductCategory.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به صفحه اصلی</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\bin\Release\net5.0\MarketPlace.DataLayer.deps.json
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\bin\Release\net5.0\MarketPlace.DataLayer.runtimeconfig.json
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\bin\Release\net5.0\MarketPlace.DataLayer.runtimeconfig.dev.json
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\bin\Release\net5.0\MarketPlace.DataLayer.dll
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\bin\Release\net5.0\ref\MarketPlace.DataLayer.dll
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\bin\Release\net5.0\MarketPlace.DataLayer.pdb
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.AssemblyInfoInputs.cache
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.AssemblyInfo.cs
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.csproj.CoreCompileInputs.cache
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.dll
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\ref\MarketPlace.DataLayer.dll
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.pdb
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.genruntimeconfig.cache
+D:\MarketPlace\MarketPlace\MarketPlace.DataLayer\obj\Release\net5.0\MarketPlace.DataLayer.csproj.AssemblyReference.cache

@@ -1,0 +1,84 @@
+﻿@page
+@model MarketPlace.Pages.Admin.SiteBanners.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+     Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+<h2>حذف</h2>
+
+<h3>آیا از پاک کردن این بلاگ مطمئن هستین ؟</h3>
+<div>
+    <h4>بنرتبلیغاتی</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.ImageName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.ImageName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.Url)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.Url)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.ColSize)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.ColSize)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.BannerPlacement)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.BannerPlacement)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.IsDelete)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.IsDelete)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.CreateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.CreateDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteBanner.LastUpdateDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SiteBanner.LastUpdateDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="SiteBanner.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">برگشت به لیست</a>
+    </form>
+</div>
+        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

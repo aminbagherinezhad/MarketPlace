@@ -1,0 +1,29 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@model List<MarketPlace.DataLayer.Entities.Mazholar.Blog>
+@using MarketPlace.Application.Utils
+@{
+
+    Layout = null;
+}
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var slider in Model)
+    {
+
+        <div class="col-lg-3">
+            <article class="single_blog">
+                <figure>
+                    <div class="blog_thumb">
+                        <a href="/BlogDetail/@slider.Id"><img src="/Blog/@slider.ImageName" alt="@slider.Title"></a>
+                    </div>
+                    <figcaption class="blog_content">
+                        <p class="post_author">توسط <a href="#">@slider.Writer</a></p>
+                        <h3 class="post_title"><a href="/BlogDetail/@slider.Id">بیشتر بخوانید</a></h3>
+                    </figcaption>
+                </figure>
+            </article>
+        </div>
+
+    }
+}

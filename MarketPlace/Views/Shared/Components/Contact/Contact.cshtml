@@ -1,0 +1,19 @@
+﻿@using MarketPlace.Application.EntitiesExtensions
+@model List<MarketPlace.DataLayer.Entities.Mazholar.Contact>
+
+@if (Model != null && Model.Any())
+{
+    @foreach (var slider in Model)
+    {
+
+        <div class="contact_message content">
+            <h3>تماس با ما</h3>
+            <p>@slider.Title</p>
+            <ul>
+                <li><i class="fa fa-fw fa-map-marker"></i> @slider.Address</li>
+                <li><i class="fa fa-fw fa-phone"></i> <span class="ltr-text">+(98) @slider.Phone</span> @*، <span class="ltr-text">+(98) @slider.Phone</span>*@</li>
+                <li><i class="fa fa-fw fa-envelope-o"></i> <a href="#">@slider.Email</a></li>
+            </ul>
+        </div>
+    }
+}

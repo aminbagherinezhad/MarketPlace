@@ -1,0 +1,77 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Blogs.IndexModel
+@using MarketPlace.Application.Utils
+@{
+    ViewData["Title"] = "صفحه بلاگ";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <p>
+                            <a asp-page="Create">بلاگ جدید</a>
+                        </p>
+                        <div class="panel-body">
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Blog[0].Title)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Blog[0].Writer)
+                                            </th>
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Blog[0].ShortDescription)
+                                            </th>
+                                        @*    <th>
+                                                @Html.DisplayNameFor(model => model.Blog[0].Text)
+                                            </th>*@
+                                            <th scope="col">
+                                                @Html.DisplayNameFor(model => model.Blog[0].ImageName)
+                                            </th>
+                                          
+
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                               
+                                        @foreach (var item in Model.Blog)
+                                        {
+                                            <tr>
+                                                <td scope="row" data-label="@Html.DisplayNameFor(model => model.Blog[0].Title)">@Html.DisplayFor(modelItem => item.Title)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Blog[0].Writer)">@Html.DisplayFor(modelItem => item.Writer)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Blog[0].ShortDescription)">@Html.DisplayFor(modelItem => item.ShortDescription)</td>
+                                                <td data-label="@Html.DisplayNameFor(model => model.Blog[0].ImageName)">@Html.DisplayFor(modelItem => item.ImageName)</td>
+                                                <td>
+                                                    <a asp-page="./Edit" asp-route-id="@item.Id">ویرایش</a> |
+                                                    <a asp-page="./Details" asp-route-id="@item.Id">جزئیات</a> |
+                                                    <a asp-page="./Delete" asp-route-id="@item.Id">حذف</a>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

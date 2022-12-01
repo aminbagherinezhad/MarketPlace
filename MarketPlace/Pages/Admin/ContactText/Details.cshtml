@@ -1,0 +1,73 @@
+﻿@page
+@model MarketPlace.Pages.Admin.ContactText.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>تماس</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Contact.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Contact.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Contact.Address)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Contact.Address)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Contact.Phone)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Contact.Phone)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Contact.Email)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Contact.Email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Contact.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Contact.IsDelete)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Contact.CreateDate)
+                                </dt>
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.Contact.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

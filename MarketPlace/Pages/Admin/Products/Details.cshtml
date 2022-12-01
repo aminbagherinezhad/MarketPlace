@@ -1,0 +1,111 @@
+﻿@page
+@model MarketPlace.Pages.Admin.Products.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="main_content_area">
+    <div class="container">
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    @await Component.InvokeAsync("SideBarAdmin")
+                </div>
+
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+
+                        <h2>جزئیات</h2>
+
+                        <div>
+                            <h4>محصولات</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.Title)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.Title)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.ImageName)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.ImageName)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.Price)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.Price)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.ShortDescription)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.ShortDescription)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.Description)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.Description)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.ProductAcceptOrRejectDescription)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.ProductAcceptOrRejectDescription)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.IsActive)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.IsActive)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.ProductAcceptanceState)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.ProductAcceptanceState)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.SiteProfit)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.SiteProfit)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.Placement)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.Placement)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.Seller)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.Seller.Address)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Product.IsDelete)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Product.IsDelete)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <div>
+                            <a asp-page="./Edit" asp-route-id="@Model.Product.Id">ویرایش</a> |
+                            <a asp-page="./Index">برگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
